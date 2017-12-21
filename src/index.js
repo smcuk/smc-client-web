@@ -12,11 +12,16 @@ import createHistory from 'history/createBrowserHistory';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+import sagas from './containers/App/sagas';
+
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');
+
+// Inject default app sagas
+sagas.map(store.runSaga);
 
 ReactDOM.render(
   <Provider store={store}>
