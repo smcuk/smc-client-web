@@ -7,12 +7,13 @@ import Loading from '../../components/Loading';
 const locationHelper = locationHelperBuilder({});
 
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth'),
+  authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth') !== null,
   authenticatingSelector: state => {
     let firebase = state.get('firebase');
 
     return (
-      pathToJS(firebase, 'auth') === undefined || pathToJS(firebase, 'isInitializing') === true
+      pathToJS(state.get('firebase'), 'auth') === undefined ||
+      pathToJS(firebase, 'isInitializing') === true
     );
   },
   wrapperDisplayName: 'UserIsAuthenticated'
@@ -36,7 +37,7 @@ export const userIsAdminRedir = connectedRouterRedirect({
 
 const userIsNotAuthenticatedDefaults = {
   // Want to redirect the user when they are done loading and authenticated
-  authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth'),
+  authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth') == null,
   wrapperDisplayName: 'UserIsNotAuthenticated'
 };
 

@@ -13,6 +13,7 @@ import Login from '../../components/Auth/Login';
 import Register from '../../components/Auth/Register';
 import ForgotPassword from '../../components/Auth/ForgotPassword';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 // add this.props.firebase
 class AuthPage extends React.Component {
@@ -314,8 +315,7 @@ AuthPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  appStore: makeSelectGlobal(),
-  firebase: selectFirebase()
+  appStore: makeSelectGlobal()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -324,8 +324,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(
-//   firebaseConnect(userIsNotAuthenticated(AuthPage))
-// );
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(AuthPage);

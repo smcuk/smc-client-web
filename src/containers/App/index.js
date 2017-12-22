@@ -17,6 +17,11 @@ import { updateContentDimensions, getCurrentTheme } from './appUtils';
 import { findMenuItem } from '../../components/LeftDrawer/menuUtils';
 import { withRouter, Route } from 'react-router-dom';
 import Dashboard from '../../containers/DashboardPage';
+import Login from '../../containers/Auth';
+import {
+  userIsAuthenticatedRedir,
+  userIsNotAuthenticatedRedir
+} from '../../containers/Auth/auth-routing';
 
 const theme = new Theme();
 
@@ -136,7 +141,8 @@ class App extends React.Component {
               transitionEnterTimeout={0}
               transitionLeave={false}
             >
-              <Route path="/" component={Dashboard} />
+              <Route exact path="/" component={userIsAuthenticatedRedir(Dashboard)} />
+              <Route exact path="/login" component={userIsNotAuthenticatedRedir(Login)} />
             </ReactCSSTransitionGroup>
           </div>
         </div>

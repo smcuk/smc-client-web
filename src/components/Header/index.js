@@ -14,6 +14,7 @@ import Theme from '../../theming/theme';
 import Styles from './styles';
 import TabNav from './TabsNav';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const theme = new Theme();
 
@@ -134,4 +135,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(Header);

@@ -6,6 +6,7 @@ import PageBase from '../../components/PageBase';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 // import { reduxFirebase as fbReduxSettings } from 'config';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -28,16 +29,10 @@ class DashboardPage extends React.Component {
   }
 }
 
-export default connect(({ firebase }) => ({
-  auth: pathToJS(firebase, 'auth'),
-  account: pathToJS(firebase, 'profile')
-}))(DashboardPage);
-
-// export default userIsAuthenticated(
-//   firebaseConnect(
-//     connect(({ firebase }) => ({
-//       auth: pathToJS(firebase, 'auth'),
-//       account: pathToJS(firebase, 'profile')
-//     }))
-//   )(DashboardPage)
-// );
+export default compose(
+  firebaseConnect(),
+  connect(({ firebase }) => ({
+    auth: pathToJS(firebase, 'auth'),
+    account: pathToJS(firebase, 'profile')
+  }))
+)(DashboardPage);
