@@ -8,7 +8,6 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from './containers/App/reducer';
 import { firebaseStateReducer } from 'react-redux-firebase';
-import authReducer from './containers/Auth/reducer';
 
 /*
  * routeReducer

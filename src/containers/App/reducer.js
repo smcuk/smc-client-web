@@ -80,6 +80,7 @@ function appReducer(state = initialState, action) {
         .set('selectedOpenedMenuIndex', 0)
         .set('selectedOpenedMenuItem', openedMenuItem);
     }
+
     case ActionTypes.AUTHENTICATION_FAILED: {
       return state.set('authenticationErrorMessage', action.message);
     }

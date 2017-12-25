@@ -5,15 +5,13 @@ import ThemeGray from '../../theming/themes/theme-gray';
 import ThemeDarkBlue from '../../theming/themes/theme-dark-blue';
 
 const updateContentDimensions = () => {
-  const body = document.querySelector('body');
-  const element = document.querySelector('.main-container');
-  const height = window.innerHeight;
-
-  if (element) {
-    element.style.minHeight = `${height - 100}px`;
-  }
-
-  body.style.overflowY = 'auto';
+  // const body = document.querySelector('body');
+  // const element = document.querySelector('.main-container');
+  // const height = window.innerHeight;
+  // if (element) {
+  //   element.style.minHeight = `${height - 100}px`;
+  // }
+  // body.style.overflowY = 'auto';
 };
 
 const getCurrentTheme = currentTheme => {
