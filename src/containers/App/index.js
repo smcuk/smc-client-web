@@ -111,8 +111,6 @@ class App extends React.Component {
     const path = this.props.location.pathname;
     const currentRoute = path;
 
-    console.log(this.props.appStore.userIsAuthenticated);
-
     if (this.props.appStore.userIsAuthenticated) {
       return (
         <div
@@ -142,7 +140,7 @@ class App extends React.Component {
               transitionLeave={false}
             >
               <Route exact path="/" component={userIsAuthenticatedRedir(Dashboard)} />
-              <Route exact path="/login" component={userIsNotAuthenticatedRedir(Login)} />
+              <Route exact path="/login" component={Login} />
             </ReactCSSTransitionGroup>
           </div>
         </div>

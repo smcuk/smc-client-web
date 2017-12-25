@@ -132,8 +132,12 @@ class LeftDrawer extends React.Component {
       >
         <div style={styles.logo}>Globi</div>
         <div style={styles.avatar.div}>
-          <Avatar src={this.props.appStore.user.imgUrl} size={50} style={styles.avatar.icon} />
-          <span style={styles.avatar.span}>{this.props.appStore.user.name}</span>
+          <Avatar
+            src={this.props.appStore.auth.providerData[0].photoURL}
+            size={50}
+            style={styles.avatar.icon}
+          />
+          <span style={styles.avatar.span}>{this.props.appStore.auth.displayName}</span>
         </div>
         {this.props.appStore.showOpenViews ? (
           <OpenViewsItems

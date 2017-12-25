@@ -39,3 +39,6 @@ export const TOGGLE_ROOT_MENUS = 'app/TOGGLE_ROOT_MENUS';
 export const CHANGE_SHOWS_TABS = 'app/CHANGE_SHOWS_TABS';
 export const CHANGE_SHOW_OPEN_VIEWS = 'app/CHANGE_SHOW_OPEN_VIEWS';
 export const CHANGE_LAYOUT = 'app/CHANGE_LAYOUT';
+
+export const LOGIN = '@@reactReduxFirebase/LOGIN';
+export const LOGOUT = '@@reactReduxFirebase/LOGOUT';

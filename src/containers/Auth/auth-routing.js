@@ -10,10 +10,10 @@ const userIsAuthenticatedDefaults = {
   authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth') !== null,
   authenticatingSelector: state => {
     let firebase = state.get('firebase');
-
+    console.log(firebase.get('isInitializing'), '-isinit');
     return (
       pathToJS(state.get('firebase'), 'auth') === undefined ||
-      pathToJS(firebase, 'isInitializing') === true
+      firebase.get('isInitializing') === true
     );
   },
   wrapperDisplayName: 'UserIsAuthenticated'

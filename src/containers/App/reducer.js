@@ -1,12 +1,8 @@
 import { fromJS } from 'immutable';
 import * as ActionTypes from './constants';
 
-const initialState = fromJS({
-  user: {
-    name: 'Girish Lakshmanan',
-    email: 'demo@test.com',
-    imgUrl: 'http://www.material-ui.com/images/ok-128.jpg'
-  },
+export const initialState = fromJS({
+  auth: {},
   authenticationErrorMessage: '',
   registrationErrorMessage: '',
   menus: [],
@@ -15,7 +11,7 @@ const initialState = fromJS({
   selectedMenuItem: null,
   selectedOpenedMenuIndex: 0,
   selectedOpenedMenuItem: null,
-  userIsAuthenticated: true,
+  userIsAuthenticated: false,
   currentTheme: 'darkBlueTheme', // darkTheme, lightTheme, blueTheme, grayTheme, darkBlueTheme
   openSettingDrawer: false,
   showTabs: false,
@@ -67,7 +63,9 @@ function appReducer(state = initialState, action) {
       return state.set('showOpenViews', action.value);
 
     // Authentication process
-    case ActionTypes.AUTHENTICATED: {
+    case ActionTypes.LOGIN: {
+      console.log('state:', state.get('user'));
+
       const menus = state.get('menus');
       const openViews = state.get('openViews');
       const menuItem = menus[0];
@@ -75,7 +73,7 @@ function appReducer(state = initialState, action) {
 
       return state
         .set('userIsAuthenticated', true)
-        .set('user', action.user)
+        .set('auth', action.auth)
         .set('authenticationErrorMessage', '')
         .set('selectedMenuIndex', 0)
         .set('selectedMenuItem', menuItem)
@@ -91,10 +89,10 @@ function appReducer(state = initialState, action) {
     case ActionTypes.REGISTRATION_FAILED: {
       return state.set('registrationErrorMessage', action.message);
     }
-    case ActionTypes.SIGN_OUT:
+    case ActionTypes.LOGOUT:
       return state
         .set('userIsAuthenticated', false)
-        .set('user', {})
+        .set('auth', {})
         .set('authenticationErrorMessage', '');
     // End of Authentication process
 

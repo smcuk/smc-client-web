@@ -4,9 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { userIsNotAuthenticated } from '../../containers/Auth/auth-routing';
 
-import { makeSelectGlobal, selectFirebase } from '../App/selectors';
+import { makeSelectGlobal, makeSelectFirebaseAuth } from '../App/selectors';
 import ThemeDefault from '../../theming/themes/theme-default';
 import * as appActions from '../../containers/App/actions';
 import Login from '../../components/Auth/Login';
@@ -14,6 +13,9 @@ import Register from '../../components/Auth/Register';
 import ForgotPassword from '../../components/Auth/ForgotPassword';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
 import { compose } from 'redux';
+import Loading from '../../components/Loading';
+import { userIsNotAuthenticatedRedir } from '../Auth/auth-routing';
+import { withRouter } from 'react-router-dom';
 
 // add this.props.firebase
 class AuthPage extends React.Component {
@@ -255,54 +257,62 @@ class AuthPage extends React.Component {
   }
 
   render() {
-    return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
-        <div>
-          {this.state.showRegister ? (
-            <div>
-              <Register
-                fullName={this.state.register.fullName}
-                onFullNameChange={this.registerFullNameChanged}
-                email={this.state.register.email}
-                onEmailChange={this.registerEmailChanged}
-                password={this.state.register.password}
-                onPasswordChange={this.registerPasswordChanged}
-                confirmPassword={this.state.register.confirmPassword}
-                onConfirmPasswordChange={this.registerConfirmPasswordChanged}
-                onRegister={this.register}
-                onGoBack={this.showLogin}
-              />
-            </div>
-          ) : (
-            <div>
-              {this.state.showForgotPassword ? (
-                <ForgotPassword
-                  email={this.state.forgotPassword.email}
-                  onEmailChange={this.forgotPasswordEmailChanged}
+    const { auth } = this.props;
+
+    if (!isLoaded(auth)) {
+      return <Loading />;
+    }
+
+    if (isEmpty(auth)) {
+      return (
+        <MuiThemeProvider muiTheme={ThemeDefault}>
+          <div>
+            {this.state.showRegister ? (
+              <div>
+                <Register
+                  fullName={this.state.register.fullName}
+                  onFullNameChange={this.registerFullNameChanged}
+                  email={this.state.register.email}
+                  onEmailChange={this.registerEmailChanged}
+                  password={this.state.register.password}
+                  onPasswordChange={this.registerPasswordChanged}
+                  confirmPassword={this.state.register.confirmPassword}
+                  onConfirmPasswordChange={this.registerConfirmPasswordChanged}
+                  onRegister={this.register}
                   onGoBack={this.showLogin}
                 />
-              ) : (
-                <Login
-                  email={this.state.login.email}
-                  onEmailChange={this.loginEmailChanged}
-                  password={this.state.login.password}
-                  onPasswordChange={this.loginPasswordChanged}
-                  onSignIn={this.signIn}
-                  onSignInFacebook={this.signInFacebook}
-                  onSignInGoogle={this.signInGoogle}
-                  onSignInTwitter={this.signInTwitter}
-                  onForgotPassword={this.showForgotPassword}
-                  onRegister={this.showRegister}
-                  rememberMe={this.state.login.rememberMe}
-                  onRememberMeChange={this.loginRememberMeChanged}
-                  errorMessage={this.state.errorMessage}
-                />
-              )}
-            </div>
-          )}
-        </div>
-      </MuiThemeProvider>
-    );
+              </div>
+            ) : (
+              <div>
+                {this.state.showForgotPassword ? (
+                  <ForgotPassword
+                    email={this.state.forgotPassword.email}
+                    onEmailChange={this.forgotPasswordEmailChanged}
+                    onGoBack={this.showLogin}
+                  />
+                ) : (
+                  <Login
+                    email={this.state.login.email}
+                    onEmailChange={this.loginEmailChanged}
+                    password={this.state.login.password}
+                    onPasswordChange={this.loginPasswordChanged}
+                    onSignIn={this.signIn}
+                    onSignInFacebook={this.signInFacebook}
+                    onSignInGoogle={this.signInGoogle}
+                    onSignInTwitter={this.signInTwitter}
+                    onForgotPassword={this.showForgotPassword}
+                    onRegister={this.showRegister}
+                    rememberMe={this.state.login.rememberMe}
+                    onRememberMeChange={this.loginRememberMeChanged}
+                    errorMessage={this.state.errorMessage}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        </MuiThemeProvider>
+      );
+    }
   }
 }
 
@@ -315,7 +325,8 @@ AuthPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  appStore: makeSelectGlobal()
+  appStore: makeSelectGlobal(),
+  auth: makeSelectFirebaseAuth()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -324,4 +335,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(AuthPage);
+export default compose(
+  firebaseConnect(),
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter,
+  userIsNotAuthenticatedRedir
+)(AuthPage);
