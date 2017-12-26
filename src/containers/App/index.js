@@ -139,14 +139,29 @@ class App extends React.Component {
               transitionEnterTimeout={0}
               transitionLeave={false}
             >
-              <Route exact path="/" component={userIsAuthenticatedRedir(Dashboard)} />
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={userIsAuthenticatedRedir(Dashboard)} />
+              <Route exact path="/login" component={Auth} />
             </ReactCSSTransitionGroup>
           </div>
         </div>
       );
     }
-    return <Auth />;
+    return (
+      <div>
+        {' '}
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div>
+              <h1>LANDING PAGE GOES HERE</h1>
+            </div>
+          )}
+        />
+        <Route exact path="/dashboard" component={userIsAuthenticatedRedir(Dashboard)} />
+        <Route exact path="/login" component={Auth} />
+      </div>
+    );
   }
 
   render() {

@@ -18,7 +18,7 @@ class Login extends React.PureComponent {
       <div className="signup-container">
         <button className="signup-button signup-button-email" onClick={this.props.onSignInEmail}>
           <span className="signup-icon-svg">
-            <svg class="svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
+            <svg className="signup-svg svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
               <path d="M4 6v13h17V6H4zm5.906 7.968l2.594 2.124 2.594-2.124 4.146 4.02H5.76l4.146-4.02zm-4.888 3.326V9.966l4.097 3.354-4.097 3.974zm10.867-3.974l4.097-3.354v7.328l-4.097-3.974zm4.097-6.308v1.643L12.5 14.78 5.018 8.655V7.012h14.964z" />
             </svg>{' '}
           </span>

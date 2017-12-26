@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import Data from '../../data';
-import { userIsAuthenticated } from '../Auth/auth-routing';
+import { userIsAuthenticatedRedir } from '../Auth/auth-routing';
 import PageBase from '../../components/PageBase';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 // import { reduxFirebase as fbReduxSettings } from 'config';
@@ -31,6 +31,7 @@ class DashboardPage extends React.Component {
 
 export default compose(
   firebaseConnect(),
+  userIsAuthenticatedRedir,
   connect(({ firebase }) => ({
     auth: pathToJS(firebase, 'auth'),
     account: pathToJS(firebase, 'profile')

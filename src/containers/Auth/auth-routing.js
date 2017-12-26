@@ -7,7 +7,10 @@ import Loading from '../../components/Loading';
 const locationHelper = locationHelperBuilder({});
 
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => pathToJS(state.get('firebase'), 'auth') !== null,
+  authenticatedSelector: state => {
+    console.log('hhhhhhh');
+    return pathToJS(state.get('firebase'), 'auth');
+  },
   authenticatingSelector: state => {
     let firebase = state.get('firebase');
     console.log(firebase.get('isInitializing'), '-isinit');
