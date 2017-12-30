@@ -21,13 +21,13 @@ class Register extends React.PureComponent {
             </div>
             <hr />
             <form>
-              <TextField
+              {/* <TextField
                 hintText="Full Name"
                 floatingLabelText="Full Name"
                 fullWidth
                 value={this.props.fullName}
                 onChange={this.props.onFullNameChange}
-              />
+              /> */}
               <TextField
                 hintText="E-mail"
                 floatingLabelText="E-mail"

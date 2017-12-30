@@ -27,7 +27,6 @@ const styles = {
   paper: {
     padding: 20,
     overflow: 'auto'
-    // backgroundColor: 'rgb(240, 236, 236)'
   },
   buttonsDiv: {
     textAlign: 'center',
@@ -73,7 +72,7 @@ const styles = {
   },
   instructions: {
     textAlign: 'center',
-    color: grey500
+    color: 'darkgrey'
   },
   logoContainer: {
     textAlign: 'center',

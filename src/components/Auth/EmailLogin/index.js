@@ -9,7 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import { blue200 } from 'material-ui/styles/colors';
 import styles from '../styles';
-import Logo from '../../../logo.png';
+import Logo from '../../../logo.svg';
 
 class Login extends React.PureComponent {
   render() {
@@ -18,7 +18,7 @@ class Login extends React.PureComponent {
         <div style={styles.boxContainer}>
           <Paper style={styles.paper}>
             <div style={styles.logoContainer}>
-              <img style={{ width: 295, height: 54, fill: blue200 }} src={Logo} alt="SeeMyChain" />
+              <img style={{ width: 295, height: 54 }} src={Logo} alt="SeeMyChain" />
             </div>
 
             {this.props.errorMessage ? (

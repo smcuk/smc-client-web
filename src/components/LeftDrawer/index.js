@@ -13,6 +13,7 @@ import Styles from './styles';
 import OpenViewsItems from './OpenViewItems';
 import MenuItems from './MenuItems';
 import { findMenuItem, scrollToOpenViewsItem, scrollToMenuItem } from './menuUtils';
+import PlaceHolder from '../../placeholderavatar.svg';
 
 const theme = new Theme();
 
@@ -133,11 +134,17 @@ class LeftDrawer extends React.Component {
         <div style={styles.logo}>SeeMyChain</div>
         <div style={styles.avatar.div}>
           <Avatar
-            src={this.props.appStore.auth.providerData[0].photoURL}
+            src={this.props.appStore.auth.providerData[0].photoURL || PlaceHolder}
             size={50}
             style={styles.avatar.icon}
           />
-          <span style={styles.avatar.span}>{this.props.appStore.auth.displayName}</span>
+          <span style={styles.avatar.span}>
+            {this.props.appStore.auth.displayName ||
+              this.props.appStore.auth.email.substring(
+                0,
+                this.props.appStore.auth.email.indexOf('@')
+              )}
+          </span>
         </div>
         {this.props.appStore.showOpenViews ? (
           <OpenViewsItems

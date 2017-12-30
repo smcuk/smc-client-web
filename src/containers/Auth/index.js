@@ -85,15 +85,8 @@ class AuthPage extends React.Component {
       rememberMe: this.state.login.rememberMe
     };
 
-    this.props.actions.signIn(payload);
+    this.props.firebase.login(payload);
   }
-
-  // signInFacebook() {
-  //   // validations goes here
-
-  //   const payload = {};
-  //   this.props.actions.signInFacebook(payload);
-  // }
 
   signInFacebook = loginData => {
     this.setState({ isLoading: true });
@@ -175,12 +168,11 @@ class AuthPage extends React.Component {
     // validations goes here
 
     const payload = {
-      fullName: this.state.register.fullName,
       email: this.state.register.email,
       password: this.state.register.password
     };
 
-    this.props.actions.register(payload);
+    this.props.firebase.createUser(payload);
   }
 
   registerFullNameChanged(event) {
