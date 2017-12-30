@@ -8,8 +8,7 @@ const locationHelper = locationHelperBuilder({});
 
 const userIsAuthenticatedDefaults = {
   authenticatedSelector: state => {
-    console.log('hhhhhhh');
-    return pathToJS(state.get('firebase'), 'auth');
+    return pathToJS(state.get('firebase'), 'auth') != null;
   },
   authenticatingSelector: state => {
     let firebase = state.get('firebase');

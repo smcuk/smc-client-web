@@ -130,7 +130,7 @@ class LeftDrawer extends React.Component {
         docked
         open={navDrawerOpen}
       >
-        <div style={styles.logo}>Globi</div>
+        <div style={styles.logo}>SeeMyChain</div>
         <div style={styles.avatar.div}>
           <Avatar
             src={this.props.appStore.auth.providerData[0].photoURL}

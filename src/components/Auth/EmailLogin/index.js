@@ -10,7 +10,6 @@ import FontIcon from 'material-ui/FontIcon';
 import { blue200 } from 'material-ui/styles/colors';
 import styles from '../styles';
 import Logo from '../../../logo.png';
-import './login.css';
 
 class Login extends React.PureComponent {
   render() {
@@ -19,8 +18,9 @@ class Login extends React.PureComponent {
         <div style={styles.boxContainer}>
           <Paper style={styles.paper}>
             <div style={styles.logoContainer}>
-              <img style={{ width: 295, height: 54, fill: blue200 }} src={Logo} alt="Globi" />
+              <img style={{ width: 295, height: 54, fill: blue200 }} src={Logo} alt="SeeMyChain" />
             </div>
+
             {this.props.errorMessage ? (
               <div>
                 <p style={styles.errorMessage}>* {this.props.errorMessage}</p>
@@ -29,6 +29,7 @@ class Login extends React.PureComponent {
 
             <form>
               <TextField
+                style={styles.textField}
                 hintText="E-mail"
                 floatingLabelText="E-mail"
                 fullWidth
@@ -36,6 +37,7 @@ class Login extends React.PureComponent {
                 onChange={this.props.onEmailChange}
               />
               <TextField
+                style={styles.textField}
                 hintText="Password"
                 floatingLabelText="Password"
                 fullWidth
@@ -78,6 +80,14 @@ class Login extends React.PureComponent {
               icon={<FontIcon className="material-icons">person_add</FontIcon>}
             />
           </div>
+
+          <div style={styles.buttonsDiv}>
+            <FlatButton
+              label="← All signin options"
+              onClick={this.props.hideEmailLogin}
+              style={styles.flatButton}
+            />
+          </div>
         </div>
       </div>
     );
@@ -92,9 +102,6 @@ Login.propTypes = {
   rememberMe: PropTypes.any.isRequired,
   onRememberMeChange: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
-  onSignInFacebook: PropTypes.func.isRequired,
-  onSignInGoogle: PropTypes.func.isRequired,
-  onSignInTwitter: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
   onRegister: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired

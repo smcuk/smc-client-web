@@ -6,18 +6,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 import styles from '../styles';
 import Logo from '../../../logo-small.png';
 
-class Register extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class Register extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div id="login-form">
         <div style={styles.boxContainer}>
           <Paper style={styles.paper}>
             <div>
-              <div style={styles.title}>
-                Sign Up
-              </div>
+              <div style={styles.title}>Sign Up</div>
               <div style={styles.logoSmallContainer}>
-                <img src={Logo} alt="Globi" />
+                <img src={Logo} alt="SeeMyChain" />
               </div>
             </div>
             <hr />
@@ -85,7 +84,7 @@ Register.propTypes = {
   confirmPassword: PropTypes.string.isRequired,
   onConfirmPasswordChange: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
-  onRegister: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired
 };
 
 export default Register;
