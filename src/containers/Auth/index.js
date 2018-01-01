@@ -43,7 +43,8 @@ class AuthPage extends React.Component {
       showForgotPassword: false,
       showRegister: false,
       errorMessage: '',
-      isLoading: false
+      isLoading: false,
+      isSigningIn: false
     };
 
     this.showLogin = this.showLogin.bind(this);
@@ -85,7 +86,18 @@ class AuthPage extends React.Component {
       rememberMe: this.state.login.rememberMe
     };
 
-    this.props.firebase.login(payload);
+    this.setState({ isSigningIn: true });
+    this.props.firebase
+      .login(payload)
+      .then(() => {
+        this.setState({ isSigningIn: false });
+        // this is where you can redirect to another route
+      })
+      .catch(error => {
+        this.setState({ isSigningIn: false });
+        console.log('there was an error', error);
+        console.log('error prop:', this.props.authError); // thanks to connect
+      });
   }
 
   signInFacebook = loginData => {
@@ -318,6 +330,7 @@ class AuthPage extends React.Component {
                         onForgotPassword={this.showForgotPassword}
                         errorMessage={this.state.errorMessage}
                         hideEmailLogin={this.hideEmailLogin}
+                        loading={this.state.isSigningIn}
                       />
                     )}
                   </div>

@@ -7,23 +7,23 @@ const styles = {
     fontWeight: typography.fontWeightLight,
     color: grey600,
     paddingBottom: 15,
-    display: 'block',
+    display: 'block'
   },
   title: {
     fontSize: 24,
     fontWeight: typography.fontWeightLight,
-    marginBottom: 20,
+    marginBottom: 20
   },
   paper: {
-    padding: 30,
+    padding: 30
   },
   clear: {
-    clear: 'both',
+    clear: 'both'
   },
   pageBaseContent: {
     height: '100%',
-    minHeight: 500,
-  },
+    minHeight: 500
+  }
 };
 
 export default styles;

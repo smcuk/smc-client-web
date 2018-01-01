@@ -53,6 +53,10 @@ const styles = {
   boxBtn: {
     float: 'right'
   },
+  boxBtnSignin: {
+    width: '80%',
+    marginLeft: '10%'
+  },
   btn: {
     background: '#4f81e9',
     color: white,

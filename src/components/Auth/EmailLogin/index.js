@@ -10,6 +10,7 @@ import FontIcon from 'material-ui/FontIcon';
 import { blue200 } from 'material-ui/styles/colors';
 import styles from '../styles';
 import Logo from '../../../logo.svg';
+import ProgressButton from '../../ProgressButton';
 
 class Login extends React.PureComponent {
   render() {
@@ -33,34 +34,39 @@ class Login extends React.PureComponent {
                 hintText="E-mail"
                 floatingLabelText="E-mail"
                 fullWidth
+                name="userid"
                 value={this.props.email}
                 onChange={this.props.onEmailChange}
+                autoComplete="on"
               />
               <TextField
                 style={styles.textField}
+                name="password"
                 hintText="Password"
                 floatingLabelText="Password"
                 fullWidth
                 type="password"
                 value={this.props.password}
                 onChange={this.props.onPasswordChange}
+                autoComplete="on"
               />
 
               <div style={styles.buttonsContainer}>
-                <Checkbox
+                {/* <Checkbox
                   label="Remember me"
                   style={styles.checkRemember.style}
                   labelStyle={styles.checkRemember.labelStyle}
                   iconStyle={styles.checkRemember.iconStyle}
                   checked={this.props.rememberMe}
                   onCheck={this.props.onRememberMeChange}
-                />
+                /> */}
 
-                <RaisedButton
+                <ProgressButton
+                  style={Object.assign(styles.boxBtnSignin, styles.flatButton)}
                   label="Login"
-                  primary
-                  style={styles.boxBtn}
-                  onClick={this.props.onSignIn}
+                  onSignIn={this.props.onSignIn}
+                  success={true}
+                  loading={this.props.loading}
                 />
               </div>
             </form>
@@ -104,7 +110,8 @@ Login.propTypes = {
   onSignIn: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
   onRegister: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string.isRequired
+  errorMessage: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default Login;

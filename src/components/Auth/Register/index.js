@@ -7,7 +7,6 @@ import styles from '../styles';
 import Logo from '../../../logo-small.png';
 
 class Register extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div id="login-form">
