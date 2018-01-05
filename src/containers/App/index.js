@@ -22,6 +22,7 @@ import {
   userIsAuthenticatedRedir,
   userIsNotAuthenticatedRedir
 } from '../../containers/Auth/auth-routing';
+import './App.css';
 
 const theme = new Theme();
 
@@ -154,7 +155,12 @@ class App extends React.Component {
           path="/"
           render={() => (
             <div>
-              <h1>LANDING PAGE GOES HERE</h1>
+              <div className="homecontent">
+                <img style={{ width: '100vw', height: '100vh' }} src="/home.svg" alt="" />
+                <div className={`getstartedbutton`}>
+                  <a href="/dashboard"> Get Started!</a>
+                </div>
+              </div>
             </div>
           )}
         />
