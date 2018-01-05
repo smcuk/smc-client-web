@@ -15,6 +15,7 @@ import Styles from './styles';
 import TabNav from './TabsNav';
 import { firebaseConnect, isLoaded, isEmpty, pathToJS } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 const theme = new Theme();
 
@@ -40,8 +41,10 @@ class Header extends React.Component {
 
   signOut() {
     // this.props.actions.signOut();
-    console.log('logout');
-    this.props.firebase.logout();
+    this.props.firebase.logout().then(() => {
+      console.log('from signout promise.....');
+      this.props.history.push('/');
+    });
   }
 
   googleLogin = loginData => {
@@ -135,4 +138,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(Header);
+export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(
+  withRouter(Header)
+);

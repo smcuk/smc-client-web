@@ -47,6 +47,6 @@ export const userIsNotAuthenticated = connectedAuthWrapper(userIsNotAuthenticate
 
 export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
   ...userIsNotAuthenticatedDefaults,
-  redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/',
+  redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/dashboard',
   allowRedirectBack: false
 });
