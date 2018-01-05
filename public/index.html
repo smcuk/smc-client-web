@@ -22,14 +22,24 @@
     -->
   <title>SeeMyChain</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="%PUBLIC_URL%/index.css" rel="stylesheet">
 </head>
 
 <body>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+
+
+
   <div id="root">
-    <img src="%PUBLIC_URL%/home.svg" alt="">
+    <div class="homecontent">
+      <img style="width: 100vw;height: 100vh;" src="/home.svg" alt="">
+      <div class="homepagespinner getstartedbutton">
+        <a>Preparing...</a>
+      </div>
+
+    </div>
 
   </div>
   <!--
@@ -42,6 +52,9 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+
+
 </body>
 
 </html>
