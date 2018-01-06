@@ -5,14 +5,31 @@ export default class OAuthLogin extends React.PureComponent {
   render() {
     return (
       <div className="signup-container">
-        <button className="signup-button signup-button-email" onClick={this.props.showEmailLogin}>
+        <button className="signup-button signup-button-google" onClick={this.props.onSignInGoogle}>
           <span className="signup-icon-svg">
             <svg className="signup-svg svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
-              <path d="M4 6v13h17V6H4zm5.906 7.968l2.594 2.124 2.594-2.124 4.146 4.02H5.76l4.146-4.02zm-4.888 3.326V9.966l4.097 3.354-4.097 3.974zm10.867-3.974l4.097-3.354v7.328l-4.097-3.974zm4.097-6.308v1.643L12.5 14.78 5.018 8.655V7.012h14.964z" />
+              <g fill="none" fillRule="evenodd">
+                <path
+                  d="M20.66 12.693c0-.603-.054-1.182-.155-1.738H12.5v3.287h4.575a3.91 3.91 0 0 1-1.697 2.566v2.133h2.747c1.608-1.48 2.535-3.65 2.535-6.24z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M12.5 21c2.295 0 4.22-.76 5.625-2.06l-2.747-2.132c-.76.51-1.734.81-2.878.81-2.214 0-4.088-1.494-4.756-3.503h-2.84v2.202A8.498 8.498 0 0 0 12.5 21z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M7.744 14.115c-.17-.51-.267-1.055-.267-1.615s.097-1.105.267-1.615V8.683h-2.84A8.488 8.488 0 0 0 4 12.5c0 1.372.328 2.67.904 3.817l2.84-2.202z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M12.5 7.38c1.248 0 2.368.43 3.25 1.272l2.437-2.438C16.715 4.842 14.79 4 12.5 4a8.497 8.497 0 0 0-7.596 4.683l2.84 2.202c.668-2.01 2.542-3.504 4.756-3.504z"
+                  fill="#EA4335"
+                />
+              </g>
             </svg>{' '}
           </span>
           <div className="signup-button-labelset">
-            <span className="signup-button-label signup-text">Continue with Email</span>
+            <span className="signup-button-label signup-text">Continue with Google</span>
           </div>
         </button>
         <button
@@ -40,34 +57,20 @@ export default class OAuthLogin extends React.PureComponent {
           </span>
           <div className="signup-button-labelset">
             <span className="signup-button-label signup-text">Continue with Twitter</span>
-            <span className="signup-button-label signup-subtext">We won't post without asking</span>
+            <span className="signup-button-label signup-subtext">
+              We won't tweet without asking
+            </span>
           </div>
         </button>
-        <button className="signup-button signup-button-google" onClick={this.props.onSignInGoogle}>
+
+        <button className="signup-button signup-button-email" onClick={this.props.showEmailLogin}>
           <span className="signup-icon-svg">
             <svg className="signup-svg svgIcon-use" width="25" height="25" viewBox="0 0 25 25">
-              <g fill="none" fillRule="evenodd">
-                <path
-                  d="M20.66 12.693c0-.603-.054-1.182-.155-1.738H12.5v3.287h4.575a3.91 3.91 0 0 1-1.697 2.566v2.133h2.747c1.608-1.48 2.535-3.65 2.535-6.24z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M12.5 21c2.295 0 4.22-.76 5.625-2.06l-2.747-2.132c-.76.51-1.734.81-2.878.81-2.214 0-4.088-1.494-4.756-3.503h-2.84v2.202A8.498 8.498 0 0 0 12.5 21z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M7.744 14.115c-.17-.51-.267-1.055-.267-1.615s.097-1.105.267-1.615V8.683h-2.84A8.488 8.488 0 0 0 4 12.5c0 1.372.328 2.67.904 3.817l2.84-2.202z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M12.5 7.38c1.248 0 2.368.43 3.25 1.272l2.437-2.438C16.715 4.842 14.79 4 12.5 4a8.497 8.497 0 0 0-7.596 4.683l2.84 2.202c.668-2.01 2.542-3.504 4.756-3.504z"
-                  fill="#EA4335"
-                />
-              </g>
+              <path d="M4 6v13h17V6H4zm5.906 7.968l2.594 2.124 2.594-2.124 4.146 4.02H5.76l4.146-4.02zm-4.888 3.326V9.966l4.097 3.354-4.097 3.974zm10.867-3.974l4.097-3.354v7.328l-4.097-3.974zm4.097-6.308v1.643L12.5 14.78 5.018 8.655V7.012h14.964z" />
             </svg>{' '}
           </span>
           <div className="signup-button-labelset">
-            <span className="signup-button-label signup-text">Continue with Google</span>
+            <span className="signup-button-label signup-text">Continue with Email</span>
           </div>
         </button>
       </div>
