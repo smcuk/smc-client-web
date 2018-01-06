@@ -26,7 +26,7 @@ class DashboardPage extends React.Component {
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-          <span>GRRRRR</span>
+          <span>ROADMAP CHART GOES HERE</span>
         </PageBase>
       </Layout>
     );

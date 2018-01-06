@@ -12,7 +12,7 @@ const styles = {
     justifyContent: 'center',
     height: 'auto',
     minHeight: '100vh',
-    backgroundColor: 'darkgrey'
+    backgroundColor: '#344557'
   },
   logoImg: {
     marginRight: 10,
