@@ -7,6 +7,7 @@ import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Layout from '../Layout';
+import { Card, CardText } from 'material-ui/Card';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -26,7 +27,9 @@ class DashboardPage extends React.Component {
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-          <span>ROADMAP CHART GOES HERE</span>
+          <Card>
+            <CardText>INTERACTIVE CHART GOES HERE</CardText>
+          </Card>
         </PageBase>
       </Layout>
     );

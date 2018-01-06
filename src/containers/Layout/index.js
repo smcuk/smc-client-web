@@ -92,6 +92,8 @@ class App extends React.Component {
   }
 
   handleChangeRequestNavDrawer() {
+    console.log('handleChangeRequestNavDrawer');
+
     this.setState({
       navDrawerOpen: !this.state.navDrawerOpen
     });
@@ -122,6 +124,7 @@ class App extends React.Component {
           location={this.props.location}
           isMobileBrowser={this.state.isMobileBrowser}
           currentRoute={currentRoute}
+          navDrawerToggle={this.handleChangeRequestNavDrawer}
         />
 
         <div className="main-container" style={styles.container}>

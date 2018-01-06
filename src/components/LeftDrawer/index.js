@@ -128,8 +128,9 @@ class LeftDrawer extends React.Component {
     return (
       <Drawer
         className={`left-drawner${navDrawerOpen ? ' open' : ' close'}`}
-        docked
+        docked={!this.props.isMobileBrowser}
         open={navDrawerOpen}
+        onRequestChange={this.props.navDrawerToggle}
       >
         <div style={styles.logo}>SeeMyChain</div>
         <div style={styles.avatar.div}>
@@ -170,7 +171,8 @@ LeftDrawer.propTypes = {
   actions: PropTypes.any,
   appStore: PropTypes.any,
   location: PropTypes.any,
-  isMobileBrowser: PropTypes.bool
+  isMobileBrowser: PropTypes.bool,
+  navDrawerToggle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
