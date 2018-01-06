@@ -7,7 +7,7 @@ const data = {
       id: 'dashboard',
       text: 'DashBoard',
       icon: <FontIcon className="material-icons">assessment</FontIcon>,
-      url: '/',
+      url: '/dashboard',
       index: 0
     }
   ]

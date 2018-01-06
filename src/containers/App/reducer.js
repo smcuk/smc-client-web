@@ -39,7 +39,7 @@ function setBodyBackground(currentTheme) {
       body.style.backgroundColor = '#303a47';
       break;
     default:
-      body.style.backgroundColor = '#344557';
+      body.style.backgroundColor = 'white';
       break;
   }
 }

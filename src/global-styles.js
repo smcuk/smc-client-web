@@ -435,6 +435,7 @@ injectGlobal`
     min-height: 1000px;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+
   }
 
   .monthly-sales .recharts-label-list text {

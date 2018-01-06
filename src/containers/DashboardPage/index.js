@@ -4,9 +4,9 @@ import React from 'react';
 import { userIsAuthenticatedRedir } from '../Auth/auth-routing';
 import PageBase from '../../components/PageBase';
 import { firebaseConnect, pathToJS } from 'react-redux-firebase';
-// import { reduxFirebase as fbReduxSettings } from 'config';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import Layout from '../Layout';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -24,9 +24,11 @@ class DashboardPage extends React.Component {
 
   render() {
     return (
-      <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-        <span>GRRRRR</span>
-      </PageBase>
+      <Layout>
+        <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
+          <span>GRRRRR</span>
+        </PageBase>
+      </Layout>
     );
   }
 }

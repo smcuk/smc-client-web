@@ -8,23 +8,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Header from '../../components/Header';
 import LeftDrawer from '../../components/LeftDrawer';
-import * as appActions from './actions';
-import { makeSelectGlobal, makeSelectFirebaseAuth } from './selectors';
+import * as appActions from '../App/actions';
+import { makeSelectGlobal, makeSelectFirebaseAuth } from '../App/selectors';
 import Auth from '../../containers/Auth';
 import Theme from '../../theming/theme';
 import Styles from './styles';
-import { updateContentDimensions, getCurrentTheme } from './appUtils';
+import { updateContentDimensions, getCurrentTheme } from '../App/appUtils';
 import { findMenuItem } from '../../components/LeftDrawer/menuUtils';
 import { withRouter, Route, Link } from 'react-router-dom';
-import Dashboard from '../../containers/DashboardPage';
-import Login from '../../containers/Auth';
-import {
-  userIsAuthenticatedRedir,
-  userIsAuthenticated,
-  userIsNotAuthenticated
-} from '../../containers/Auth/auth-routing';
-import './App.css';
-import Home from '../../components/Home';
 
 const theme = new Theme();
 
@@ -114,52 +105,38 @@ class App extends React.Component {
     const path = this.props.location.pathname;
     const currentRoute = path;
 
-    if (true) {
-      return (
-        <div>
-          {' '}
-          <Route exact path="/" component={Home} />
-          <Route exact path="/dashboard" component={userIsAuthenticatedRedir(Dashboard)} />
-          <Route exact path="/login" component={Auth} />
+    return (
+      <div
+        className={
+          this.props.appStore.currentTheme +
+          (this.props.appStore.isBoxedLayout ? ' layout-boxed' : ' layout-fluid')
+        }
+      >
+        <Header
+          styles={styles.header}
+          handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer}
+        />
+
+        <LeftDrawer
+          navDrawerOpen={navDrawerOpen}
+          location={this.props.location}
+          isMobileBrowser={this.state.isMobileBrowser}
+          currentRoute={currentRoute}
+        />
+
+        <div className="main-container" style={styles.container}>
+          <ReactCSSTransitionGroup
+            transitionName="transition-animation"
+            transitionAppear
+            transitionAppearTimeout={1500}
+            transitionEnterTimeout={0}
+            transitionLeave={false}
+          >
+            {this.props.children}
+          </ReactCSSTransitionGroup>
         </div>
-      );
-    }
-
-    if (this.props.appStore.userIsAuthenticated) {
-      return (
-        <div
-          className={
-            this.props.appStore.currentTheme +
-            (this.props.appStore.isBoxedLayout ? ' layout-boxed' : ' layout-fluid')
-          }
-        >
-          <Header
-            styles={styles.header}
-            handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer}
-          />
-
-          <LeftDrawer
-            navDrawerOpen={navDrawerOpen}
-            location={this.props.location}
-            isMobileBrowser={this.state.isMobileBrowser}
-            currentRoute={currentRoute}
-          />
-
-          <div className="main-container" style={styles.container}>
-            <ReactCSSTransitionGroup
-              transitionName="transition-animation"
-              transitionAppear
-              transitionAppearTimeout={1500}
-              transitionEnterTimeout={0}
-              transitionLeave={false}
-            >
-              <Route exact path="/dashboard" component={userIsAuthenticatedRedir(Dashboard)} />
-              {/* <Route exact path="/login" component={Auth} /> */}
-            </ReactCSSTransitionGroup>
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 
   render() {

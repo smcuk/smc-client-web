@@ -11,7 +11,7 @@ const styles = (currentTheme, width, navDrawerOpen) => ({
     color: currentTheme.logoColor
   },
   container: {
-    backgroundColor: '#344557',
+    backgroundColor: grey100,
     margin: '57px 0px 0px 0px',
     paddingTop: 23,
     paddingRight: 20,
