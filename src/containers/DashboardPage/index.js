@@ -24,7 +24,9 @@ class DashboardPage extends React.Component {
 
   render() {
     return (
-      <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading} />
+      <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
+        <span>GRRRRR</span>
+      </PageBase>
     );
   }
 }

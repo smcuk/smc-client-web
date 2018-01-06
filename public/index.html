@@ -36,7 +36,7 @@
     <div class="homecontent">
       <img style="width: 100vw;height: 100vh;" src="/home.svg" alt="">
       <div class="homepagespinner getstartedbutton">
-        <a>Preparing...</a>
+        <a>Please wait...</a>
       </div>
     </div>
 
@@ -53,7 +53,10 @@
     -->
 
 
-
+  <!-- do not show home page content when auth returns -->
+  <script>
+    if (window.location.search.search(/login/)) document.getElementsByClassName('homecontent')[0].style.display = 'none'
+  </script>
 </body>
 
 </html>
