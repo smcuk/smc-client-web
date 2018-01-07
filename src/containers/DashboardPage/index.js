@@ -32,7 +32,7 @@ class DashboardPage extends React.Component {
             {' '}
             <Card style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
               <CardMedia>
-                <img src={Road} alt="" />
+                <img style={{ height: '100vh' }} src={Road} alt="" />
               </CardMedia>
             </Card>
           </div>
