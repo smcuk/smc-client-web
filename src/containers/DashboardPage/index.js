@@ -7,7 +7,8 @@ import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Layout from '../Layout';
-import { Card, CardText } from 'material-ui/Card';
+import { Card, CardMedia, CardTitle } from 'material-ui/Card';
+import Road from '../../road.svg';
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -27,9 +28,14 @@ class DashboardPage extends React.Component {
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-          <Card>
-            <CardText>INTERACTIVE CHART GOES HERE</CardText>
-          </Card>
+          <div>
+            {' '}
+            <Card style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
+              <CardMedia>
+                <img src={Road} alt="" />
+              </CardMedia>
+            </Card>
+          </div>
         </PageBase>
       </Layout>
     );

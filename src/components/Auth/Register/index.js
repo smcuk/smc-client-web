@@ -14,9 +14,9 @@ class Register extends React.PureComponent {
           <Paper style={styles.paper}>
             <div>
               <div style={styles.title}>Sign Up</div>
-              <div style={styles.logoSmallContainer}>
+              {/* <div style={styles.logoSmallContainer}>
                 <img src={Logo} alt="SeeMyChain" />
-              </div>
+              </div> */}
             </div>
             <hr />
             <form>
