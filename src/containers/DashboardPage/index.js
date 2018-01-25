@@ -9,6 +9,10 @@ import { compose } from 'redux';
 import Layout from '../Layout';
 import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 import Road from '../../road.svg';
+import { VictoryLine, VictoryScatter, VictoryGroup, VictoryLabel } from 'victory'
+import RoadMapMilestone from '../../components/RoadMap/RoadMapMilestone'
+
+
 
 class DashboardPage extends React.Component {
   constructor(props) {
@@ -25,6 +29,18 @@ class DashboardPage extends React.Component {
   }
 
   render() {
+
+    var data = [
+      { x: -190, y: 350, sidetext: 'Mortgage', order: 1 },
+      { x: 80, y: 300, sidetext: 'Offer', order: 2 },
+      { x: 60, y: 200, sidetext: 'Solicitor', order: 3 },
+      { x: 180, y: 60, sidetext: 'Survey', order: 4 },
+      { x: 150, y: 20, sidetext: 'Survey', order: 4 },
+      // { x: -30, y: 30 },
+      // { x: 40, y: 40 },
+      // { x: 50, y: 50 }
+    ]
+
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
@@ -32,7 +48,26 @@ class DashboardPage extends React.Component {
             {' '}
             <Card style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
               <CardMedia>
-                <img style={{ height: '100vh' }} src={Road} alt="" />
+
+
+                <VictoryGroup width={data.length * 400} height={data.length * 300} domain={{ x: [-200, 200], y: [-400, 400] }} data={data}>
+                  <VictoryLine
+                    sortKey="order"
+                    interpolation={"cardinal"}
+                    style={{ data: { stroke: "black", strokeWidth: 80 } }}
+                  />
+                  <VictoryLine
+                    sortKey="order"
+                    interpolation={"cardinal"}
+                    style={{ data: { stroke: "white", strokeWidth: 2, strokeDasharray: "15,15" } }}
+                  />
+                  <VictoryScatter
+                    dataComponent={<RoadMapMilestone />}
+                  />
+                </VictoryGroup>
+
+
+
               </CardMedia>
             </Card>
           </div>
