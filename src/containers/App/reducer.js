@@ -12,7 +12,7 @@ export const initialState = fromJS({
   selectedOpenedMenuIndex: 0,
   selectedOpenedMenuItem: null,
   userIsAuthenticated: false,
-  currentTheme: 'darkBlueTheme', // darkTheme, lightTheme, blueTheme, grayTheme, darkBlueTheme
+  currentTheme: 'lightTheme', // darkTheme, lightTheme, blueTheme, grayTheme, darkBlueTheme
   openSettingDrawer: false,
   showTabs: false,
   showOpenViews: false,

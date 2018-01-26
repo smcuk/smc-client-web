@@ -22,7 +22,7 @@ export default class RoadMapMilestone extends React.Component {
 
 
 
-        <VictoryLabel style={{ fontSize: 30 }} text={datum.sidetext} dy={y - 90} dx={x + 60} />
+        <VictoryLabel style={{ fontSize: 30, fill: 'grey' }} text={datum.sidetext} dy={y - 90} dx={x + 60} />
 
       </g>
     );

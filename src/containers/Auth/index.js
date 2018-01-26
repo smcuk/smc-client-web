@@ -7,6 +7,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { makeSelectGlobal, makeSelectFirebaseAuth } from '../App/selectors';
 import ThemeDefault from '../../theming/themes/theme-default';
+import ThemeLight from '../../theming/themes/theme-default';
 import * as appActions from '../../containers/App/actions';
 import EmailLogin from '../../components/Auth/EmailLogin';
 import Register from '../../components/Auth/Register';
@@ -283,7 +284,7 @@ class AuthPage extends React.Component {
 
     if (isEmpty(auth)) {
       return (
-        <MuiThemeProvider muiTheme={ThemeDefault}>
+        <MuiThemeProvider muiTheme={ThemeLight}>
           <div>
             {this.state.showRegister ? (
               <div>
@@ -301,42 +302,42 @@ class AuthPage extends React.Component {
                 />
               </div>
             ) : (
-              <div>
-                {this.state.showForgotPassword ? (
-                  <ForgotPassword
-                    email={this.state.forgotPassword.email}
-                    onEmailChange={this.forgotPasswordEmailChanged}
-                    onGoBack={this.showLogin}
-                  />
-                ) : (
-                  <div>
-                    {!this.state.showEmailLogin ? (
-                      <AuthOptions
-                        onSignInFacebook={this.signInFacebook}
-                        onSignInGoogle={this.signInGoogle}
-                        onSignInTwitter={this.signInTwitter}
-                        showEmailLogin={this.showEmailLogin}
-                      />
-                    ) : (
-                      <EmailLogin
-                        email={this.state.login.email}
-                        onEmailChange={this.loginEmailChanged}
-                        password={this.state.login.password}
-                        onPasswordChange={this.loginPasswordChanged}
-                        onRegister={this.showRegister}
-                        onSignIn={this.signIn}
-                        rememberMe={this.state.login.rememberMe}
-                        onRememberMeChange={this.loginRememberMeChanged}
-                        onForgotPassword={this.showForgotPassword}
-                        errorMessage={this.state.errorMessage}
-                        hideEmailLogin={this.hideEmailLogin}
-                        loading={this.state.isSigningIn}
-                      />
+                <div>
+                  {this.state.showForgotPassword ? (
+                    <ForgotPassword
+                      email={this.state.forgotPassword.email}
+                      onEmailChange={this.forgotPasswordEmailChanged}
+                      onGoBack={this.showLogin}
+                    />
+                  ) : (
+                      <div>
+                        {!this.state.showEmailLogin ? (
+                          <AuthOptions
+                            onSignInFacebook={this.signInFacebook}
+                            onSignInGoogle={this.signInGoogle}
+                            onSignInTwitter={this.signInTwitter}
+                            showEmailLogin={this.showEmailLogin}
+                          />
+                        ) : (
+                            <EmailLogin
+                              email={this.state.login.email}
+                              onEmailChange={this.loginEmailChanged}
+                              password={this.state.login.password}
+                              onPasswordChange={this.loginPasswordChanged}
+                              onRegister={this.showRegister}
+                              onSignIn={this.signIn}
+                              rememberMe={this.state.login.rememberMe}
+                              onRememberMeChange={this.loginRememberMeChanged}
+                              onForgotPassword={this.showForgotPassword}
+                              errorMessage={this.state.errorMessage}
+                              hideEmailLogin={this.hideEmailLogin}
+                              loading={this.state.isSigningIn}
+                            />
+                          )}
+                      </div>
                     )}
-                  </div>
-                )}
-              </div>
-            )}
+                </div>
+              )}
           </div>
         </MuiThemeProvider>
       );

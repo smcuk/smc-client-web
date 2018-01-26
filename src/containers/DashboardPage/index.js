@@ -11,6 +11,8 @@ import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 import Road from '../../road.svg';
 import { VictoryLine, VictoryScatter, VictoryGroup, VictoryLabel } from 'victory'
 import RoadMapMilestone from '../../components/RoadMap/RoadMapMilestone'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth';
+
 
 
 
@@ -26,9 +28,17 @@ class DashboardPage extends React.Component {
     this.setState({
       loading: false
     });
+
+
   }
 
+
+
+
+
   render() {
+    const { width } = this.props;
+    let widthGrow = 1;
 
     var data = [
       { x: -190, y: 350, sidetext: 'Mortgage', order: 1 },
@@ -41,6 +51,19 @@ class DashboardPage extends React.Component {
       // { x: 50, y: 50 }
     ]
 
+
+
+
+
+    if (width === LARGE) {
+
+      widthGrow = 400;
+    } else {
+      widthGrow = 75;
+
+    }
+
+
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
@@ -50,7 +73,7 @@ class DashboardPage extends React.Component {
               <CardMedia>
 
 
-                <VictoryGroup width={data.length * 400} height={data.length * 300} domain={{ x: [-200, 200], y: [-400, 400] }} data={data}>
+                <VictoryGroup width={data.length * widthGrow} height={data.length * 300} domain={{ x: [-200, 200], y: [-400, 400] }} data={data}>
                   <VictoryLine
                     sortKey="order"
                     interpolation={"cardinal"}
@@ -78,6 +101,7 @@ class DashboardPage extends React.Component {
 }
 
 export default compose(
+  withWidth(),
   firebaseConnect(),
   userIsAuthenticatedRedir,
   connect(({ firebase }) => ({
