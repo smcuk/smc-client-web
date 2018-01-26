@@ -1,7 +1,5 @@
 /* pulse in SVG */
-svg.pulse-svg {
-    overflow: visible;
-  }
+
   .first-pulse-circle, .second-pulse-circle, .third-pulse-circle {
       overflow: visible;
     fill: gold;
@@ -10,10 +8,10 @@ svg.pulse-svg {
     animation: pulse-me 3s linear infinite;
   }
   .second-pulse-circle {
-    animation-delay: 1s;
+    animation-delay: 0s;
   }
    .third-pulse-circle {
-    animation-delay: 2s;
+    animation-delay: 0s;
   }
   
   
