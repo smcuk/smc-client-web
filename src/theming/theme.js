@@ -21,7 +21,7 @@ const themes = {
   },
   lightTheme: {
     headerItemBoxShadow: 'rgb(207, 207, 207) 0px 3px 5px',
-    logoBackgroundColor: '#3399ff',
+    logoBackgroundColor: '#7144b7',
     logoColor: typography.textFullWhite,
     headerItemColor: '#6c6c6c',
     headerItemBackgroundColor: '#dbdbdb',
@@ -29,7 +29,7 @@ const themes = {
     selectedMenuListItemColor: '#717171',
     selectedMenuListItemBackgroundColor: '#cccedb',
     selectedListItemColor: white,
-    selectedListItemBackgroundColor: '#3399ff',
+    selectedListItemBackgroundColor: '#7144b7',
     menuItemColor: '#717171',
     avatarSpanColor: '#717171',
     avatarSpanTextShadow: '',

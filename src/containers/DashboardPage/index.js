@@ -39,27 +39,50 @@ class DashboardPage extends React.Component {
   render() {
     const { width } = this.props;
     let widthGrow = 1;
-
-    var data = [
-      { x: -190, y: 350, sidetext: 'Mortgage', order: 1 },
-      { x: 80, y: 300, sidetext: 'Offer', order: 2 },
-      { x: 60, y: 200, sidetext: 'Solicitor', order: 3 },
-      { x: 180, y: 60, sidetext: 'Survey', order: 4 },
-      { x: 150, y: 20, sidetext: 'Survey', order: 4 },
-      // { x: -30, y: 30 },
-      // { x: 40, y: 40 },
-      // { x: 50, y: 50 }
-    ]
-
-
+    let data = [];
+    let domain = {}
+    let roadwidth = 0;
+    let milestoneOffsetX = 0;
+    let milestoneOffsetY = 0;
 
 
 
     if (width === LARGE) {
 
+      data = [
+        { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1 },
+        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2 },
+        { x: 60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3 },
+        { x: 180, y: 60, sidetext: 'Survey', current: 'N', order: 4 },
+        { x: 150, y: 20, sidetext: 'Survey', current: 'N', order: 4 },
+
+      ]
+
+      domain = { x: [-200, 200], y: [-400, 400] };
+      roadwidth = 80;
+      milestoneOffsetX = 30
+      milestoneOffsetY = 120;
+
+
       widthGrow = 400;
     } else {
-      widthGrow = 75;
+
+
+      widthGrow = 100;
+      roadwidth = 40;
+      milestoneOffsetX = 30
+      milestoneOffsetY = 100;
+
+      data = [
+        { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1 },
+        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2 },
+        { x: -60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3 },
+        { x: 100, y: 60, sidetext: 'Survey', current: 'N', order: 4 },
+        { x: 10, y: 20, sidetext: 'Survey', current: 'N', order: 4 },
+
+      ]
+
+      domain = { x: [-200, 200], y: [-400, 400] };
 
     }
 
@@ -77,15 +100,16 @@ class DashboardPage extends React.Component {
                   <VictoryLine
                     sortKey="order"
                     interpolation={"cardinal"}
-                    style={{ data: { stroke: "black", strokeWidth: 80 } }}
+                    style={{ data: { stroke: "black", strokeWidth: roadwidth } }}
                   />
+
                   <VictoryLine
                     sortKey="order"
                     interpolation={"cardinal"}
                     style={{ data: { stroke: "white", strokeWidth: 2, strokeDasharray: "15,15" } }}
                   />
                   <VictoryScatter
-                    dataComponent={<RoadMapMilestone />}
+                    dataComponent={<RoadMapMilestone milestoneOffsetX={milestoneOffsetX} milestoneOffsetY={milestoneOffsetY} />}
                   />
                 </VictoryGroup>
 

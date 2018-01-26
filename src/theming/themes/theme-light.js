@@ -20,7 +20,7 @@ const themeLight = getMuiTheme({
     selectedTextColor: '#717171',
   },
   inkBar: {
-    backgroundColor: '#3399ff',
+    backgroundColor: '#7144b7',
   },
 });
 
