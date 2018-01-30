@@ -19,7 +19,7 @@ injectGlobal`
 
   body {
     margin: 0;
-    background-color: #344557;
+    background:#fff;
     overflow-x: hidden;
     overflow-y: hidden;
   }

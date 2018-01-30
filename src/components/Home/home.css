@@ -1,20 +1,17 @@
-body {
-  background: #344557;
-  font-family: 'Roboto', sans-serif;
-}
 
 .getstartedbutton {
-  position: fixed;
-  top: 50%;
+  /* position: fixed;
+  top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  padding: 10px 17px;
+
 }
 
 .getstartedbutton a {
   display: block;
   width: 150px;
   line-height: 40px;
-  background: grey;
   text-align: center;
   position: relative;
   text-decoration: none;
@@ -22,7 +19,11 @@ body {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 2px;
+  background: #7144b7;
+  text-transform: uppercase;
 }
+
+
 
 .getstartedbutton a:before,
 .getstartedbutton a:after {
@@ -32,8 +33,8 @@ body {
 }
 
 .getstartedbutton a:before {
-  border-bottom: 2px solid yellow;
-  border-left: 2px solid yellow;
+  border-bottom: 2px solid #7144b7;
+  border-left: 2px solid #7144b7;
   width: 10%;
   height: 33%;
   left: -10px;
@@ -41,8 +42,8 @@ body {
 }
 
 .getstartedbutton a:after {
-  border-top: 2px solid yellow;
-  border-right: 2px solid yellow;
+  border-top: 2px solid #7144b7;
+  border-right: 2px solid #7144b7;
   width: 10%;
   height: 33%;
   top: -10px;
@@ -59,25 +60,69 @@ body {
   height: 140%;
 }
 
-@keyframes homepagespinner {
-  to {
-    transform: rotate(360deg);
+
+/* html, body{
+  margin: 0 auto;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+} */
+
+#home-header {
+	background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.5)), url(./home.jpg);
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	display: flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	margin: 0 auto;
+}
+
+
+
+
+.home-heading, .home-heading-subtext {
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+
+
+}
+
+.home-heading {
+	font-size: 6em;
+	text-align: center;
+  line-height: .2em;
+  text-transform: uppercase;
+
+}
+
+.home-heading-subtext {
+	font-size: 1.5em;
+	text-align: center;
+	line-height: 1.6em;
+}
+
+
+
+@media (max-width: 600px) {
+  .home-heading {
+      font-size: 40pt;
+    }
+    .home-heading-subtext {
+    font-size: 20pt;
+    font-weight: 300;
   }
 }
 
-.homepagespinner:before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  border: 2px solid orangered;
-  border-top-color: #333;
-  animation: homepagespinner 0.6s linear infinite;
-  z-index: 1;
+@media (max-width: 364px) {
+  .home-heading {
+      font-size: 30pt;
+    }
+    .home-heading-subtext {
+    font-size: 15pt;
+    font-weight: 300;
+  }
 }

@@ -8,7 +8,7 @@ import * as appActions from './actions';
 import { makeSelectGlobal, makeSelectFirebaseAuth } from './selectors';
 import Auth from '../../containers/Auth';
 
-import { withRouter, Route, Link } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import Dashboard from '../../containers/DashboardPage';
 
 import Home from '../../components/Home';

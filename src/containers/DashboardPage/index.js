@@ -59,7 +59,7 @@ class DashboardPage extends React.Component {
       ]
 
       domain = { x: [-200, 200], y: [-400, 400] };
-      roadwidth = 80;
+      roadwidth = 50;
       milestoneOffsetX = 30
       milestoneOffsetY = 120;
 
