@@ -1,11 +1,14 @@
 import React from 'react';
 import { VictoryLabel } from 'victory'
 import './RoadMapMilestone.css'
+import Images from './RoadmapIcons'
+
 
 
 export default class RoadMapMilestone extends React.Component {
   render() {
     const { datum, x, y, milestoneOffsetX, milestoneOffsetY } = this.props;
+
 
 
     return (
@@ -24,8 +27,9 @@ export default class RoadMapMilestone extends React.Component {
           <circle className="circle third-pulse-circle" fill="none" cx={x + 10} cy={y} r="25"></circle>
           <circle className="circle" fill="#7144b7" cx={x + 10} cy={y} r="7"></circle></g> : null}
 
-        <VictoryLabel style={{ fontSize: 30, fill: '#7144b7' }} text={datum.sidetext} dy={y - 70} dx={x + 60} />
+        <image x={x - milestoneOffsetX + 15} y={y - milestoneOffsetY + 15} xlinkHref={Images[datum.icon]} height="50px" width="50px"></image>
 
+        <VictoryLabel style={{ fontSize: 30, fill: '#7144b7' }} text={datum.sidetext} dy={y - 70} dx={x + 60} />
       </g>
     );
   }

@@ -15,6 +15,7 @@ import './road.css'
 
 
 
+
 class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
@@ -43,17 +44,19 @@ class DashboardPage extends React.Component {
     let roadwidth = 0;
     let milestoneOffsetX = 0;
     let milestoneOffsetY = 0;
+    const iconOffer = '../../components/RoadMap/icon_offer.svg'
+    const iconFunding = '../../components/RoadMap/icon_funding.svg'
 
 
 
     if (width === LARGE) {
 
       data = [
-        { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1 },
-        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2 },
-        { x: 60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3 },
-        { x: 180, y: 60, sidetext: 'Survey', current: 'N', order: 4 },
-        { x: 150, y: 20, sidetext: 'Survey', current: 'N', order: 4 },
+        { x: -190, y: 350, sidetext: 'Funding', current: 'N', order: 1, icon: 'funding' },
+        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2, icon: 'offer' },
+        { x: 60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3, icon: 'offer' },
+        { x: 180, y: 60, sidetext: 'Survey', current: 'N', order: 4, icon: 'offer' },
+        { x: 150, y: 20, sidetext: 'Survey', current: 'N', order: 4, icon: 'offer' },
 
       ]
 
@@ -73,11 +76,11 @@ class DashboardPage extends React.Component {
       milestoneOffsetY = 100;
 
       data = [
-        { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1 },
-        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2 },
-        { x: -60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3 },
-        { x: 100, y: 60, sidetext: 'Survey', current: 'N', order: 4 },
-        { x: 10, y: 20, sidetext: 'Survey', current: 'N', order: 4 },
+        { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1, icon: 'funding' },
+        { x: 80, y: 300, sidetext: 'Offer', current: 'Y', order: 2, icon: 'offer' },
+        { x: -60, y: 200, sidetext: 'Solicitor', current: 'N', order: 3, icon: 'offer' },
+        { x: 100, y: 60, sidetext: 'Survey', current: 'N', order: 4, icon: 'offer' },
+        { x: 10, y: 20, sidetext: 'Survey', current: 'N', order: 4, icon: 'offer' },
 
       ]
 
