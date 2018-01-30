@@ -7,12 +7,11 @@ import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Layout from '../Layout';
-import { Card, CardMedia, CardTitle } from 'material-ui/Card';
-import Road from '../../road.svg';
+import { Card, CardMedia } from 'material-ui/Card';
 import { VictoryLine, VictoryScatter, VictoryGroup, VictoryLabel } from 'victory'
 import RoadMapMilestone from '../../components/RoadMap/RoadMapMilestone'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth';
-
+import './road.css'
 
 
 
@@ -90,13 +89,13 @@ class DashboardPage extends React.Component {
     return (
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-          <div>
+          <div className="road-container">
             {' '}
             <Card style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-              <CardMedia>
+              <CardMedia >
 
 
-                <VictoryGroup width={data.length * widthGrow} height={data.length * 300} domain={{ x: [-200, 200], y: [-400, 400] }} data={data}>
+                <VictoryGroup width={data.length * widthGrow} height={data.length * 200} domain={{ x: [-200, 200], y: [0, 400] }} data={data}>
                   <VictoryLine
                     sortKey="order"
                     interpolation={"cardinal"}
