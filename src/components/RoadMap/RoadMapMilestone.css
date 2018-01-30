@@ -3,9 +3,10 @@
   .first-pulse-circle, .second-pulse-circle, .third-pulse-circle {
       overflow: visible;
     fill: #7144b7;
-    transform: scale(0.5);
+    transform: scale(0.5) rotateX(55deg);
     transform-origin: center center;
-    animation: pulse-me 3s linear infinite;
+		animation: pulse-me 3s linear infinite;
+		
   }
   .second-pulse-circle {
     animation-delay:  1s;
@@ -17,7 +18,7 @@
   
 @keyframes pulse-me{
 	0%{
-		transform: scale(0.5);
+		transform: scale(0.5) rotateX(55deg);
 		opacity: 0;
 	}
 	50%{
@@ -27,7 +28,25 @@
 		opacity: 0.09;
 	}
 	100%{
-		transform: scale(5);
+		transform: scale(5)  rotateX(55deg);
 		opacity: 0;
 	}
 }
+
+@-webkit-keyframes pulse-me{
+	0%{
+		transform: scale(0.5) rotateX(55deg);
+		opacity: 0;
+	}
+	50%{
+		opacity: 0.3;
+	}
+	70%{
+		opacity: 0.09;
+	}
+	100%{
+		transform: scale(5)  rotateX(55deg);
+		opacity: 0;
+	}
+}
+

@@ -91,7 +91,7 @@ class DashboardPage extends React.Component {
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
           <div className="road-container">
             {' '}
-            <Card style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
+            <Card style={{ backgroundColor: 'transparent', boxShadow: 'none', maxWidth: '1000px' }}>
               <CardMedia >
 
 
