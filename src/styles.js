@@ -4,14 +4,14 @@ import { grey600 } from 'material-ui/styles/colors';
 const styles = {
   navigation: {
     fontSize: 15,
-    fontWeight: typography.fontWeightLight,
+    fontWeight: typography.fontWeightMedium,
     color: grey600,
     paddingBottom: 15,
     display: 'block'
   },
   title: {
     fontSize: 24,
-    fontWeight: typography.fontWeightLight,
+    fontWeight: typography.fontWeightMedium,
     marginBottom: 20
   },
   paper: {

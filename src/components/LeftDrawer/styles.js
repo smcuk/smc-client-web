@@ -6,7 +6,7 @@ const styles = (currentTheme) => ({
     fontSize: 22,
     color: currentTheme.logoColor,
     lineHeight: `${spacing.desktopKeylineIncrement}px`,
-    fontWeight: typography.fontWeightLight,
+    fontWeight: typography.fontWeightMedium,
     backgroundColor: currentTheme.logoBackgroundColor,
     paddingLeft: 35,
     height: 56,

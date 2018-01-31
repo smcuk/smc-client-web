@@ -71,8 +71,8 @@ class DashboardPage extends React.Component {
 
       widthGrow = 100;
       roadwidth = 40;
-      milestoneOffsetX = 55
-      milestoneOffsetY = 130;
+      milestoneOffsetX = 54
+      milestoneOffsetY = 140;
 
       data = [
         { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1, icon: 'funding' },

@@ -21,7 +21,7 @@ const styles = {
   title: {
     fontSize: 22,
     lineHeight: `${spacing.desktopKeylineIncrement}px`,
-    fontWeight: typography.fontWeightLight,
+    fontWeight: typography.fontWeightMedium,
     height: 60
   },
   paper: {
