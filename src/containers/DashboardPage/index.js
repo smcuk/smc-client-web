@@ -44,8 +44,7 @@ class DashboardPage extends React.Component {
     let roadwidth = 0;
     let milestoneOffsetX = 0;
     let milestoneOffsetY = 0;
-    const iconOffer = '../../components/RoadMap/icon_offer.svg'
-    const iconFunding = '../../components/RoadMap/icon_funding.svg'
+
 
 
 
@@ -62,8 +61,8 @@ class DashboardPage extends React.Component {
 
       domain = { x: [-200, 200], y: [-400, 400] };
       roadwidth = 50;
-      milestoneOffsetX = 30
-      milestoneOffsetY = 120;
+      milestoneOffsetX = 55
+      milestoneOffsetY = 140;
 
 
       widthGrow = 400;
@@ -72,8 +71,8 @@ class DashboardPage extends React.Component {
 
       widthGrow = 100;
       roadwidth = 40;
-      milestoneOffsetX = 30
-      milestoneOffsetY = 100;
+      milestoneOffsetX = 55
+      milestoneOffsetY = 130;
 
       data = [
         { x: -190, y: 350, sidetext: 'Mortgage', current: 'N', order: 1, icon: 'funding' },
