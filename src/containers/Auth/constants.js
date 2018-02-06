@@ -1,0 +1,13 @@
+export const SIGN_IN = 'app/SIGN_IN';
+export const SIGN_IN_FACEBOOK = 'app/SIGN_IN_FACEBOOK';
+export const SIGN_IN_GOOGLE = 'app/SIGN_IN_GOOGLE';
+export const REGISTER = 'app/REGISTER';
+export const REGISTRATION_FAILED = 'app/REGISTRATION_FAILED';
+export const RESET_PASSWORD = 'app/RESET_PASSWORD';
+export const RESET_PASSWORD_FAILED = 'app/RESET_PASSWORD_FAILED';
+export const AUTHENTICATED = 'app/AUTHENTICATED';
+export const AUTHENTICATION_FAILED = 'app/AUTHENTICATION_FAILED';
+export const CLEAR_AUTHENTICATION_MESSAGE = 'app/CLEAR_AUTHENTICATION_MESSAGE';
+export const SIGN_OUT = 'app/SIGN_OUT';
+export const LOGIN = '@@reactReduxFirebase/LOGIN';
+export const LOGOUT = '@@reactReduxFirebase/LOGOUT';

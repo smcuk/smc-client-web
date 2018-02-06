@@ -12,8 +12,6 @@ export default class RoadMapMilestone extends React.Component {
 
 
     return (
-
-
       <g >
         <g
           transform={`translate(${x - milestoneOffsetX},${y - milestoneOffsetY}) `}

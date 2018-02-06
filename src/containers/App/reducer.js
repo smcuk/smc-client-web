@@ -2,16 +2,12 @@ import { fromJS } from 'immutable';
 import * as ActionTypes from './constants';
 
 export const initialState = fromJS({
-  auth: {},
-  authenticationErrorMessage: '',
-  registrationErrorMessage: '',
   menus: [],
   openViews: [],
   selectedMenuIndex: 0,
   selectedMenuItem: null,
   selectedOpenedMenuIndex: 0,
   selectedOpenedMenuItem: null,
-  userIsAuthenticated: false,
   currentTheme: 'lightTheme', // darkTheme, lightTheme, blueTheme, grayTheme, darkBlueTheme
   openSettingDrawer: false,
   showTabs: false,
@@ -61,41 +57,6 @@ function appReducer(state = initialState, action) {
       return state.set('showTabs', action.value);
     case ActionTypes.CHANGE_SHOW_OPEN_VIEWS:
       return state.set('showOpenViews', action.value);
-
-    // Authentication process
-    case ActionTypes.LOGIN: {
-      console.log('state:', state.get('user'));
-
-      const menus = state.get('menus');
-      const openViews = state.get('openViews');
-      const menuItem = menus[0];
-      const openedMenuItem = openViews[0];
-
-      return state
-        .set('userIsAuthenticated', true)
-        .set('auth', action.auth)
-        .set('authenticationErrorMessage', '')
-        .set('selectedMenuIndex', 0)
-        .set('selectedMenuItem', menuItem)
-        .set('selectedOpenedMenuIndex', 0)
-        .set('selectedOpenedMenuItem', openedMenuItem);
-    }
-
-    case ActionTypes.AUTHENTICATION_FAILED: {
-      return state.set('authenticationErrorMessage', action.message);
-    }
-    case ActionTypes.CLEAR_AUTHENTICATION_MESSAGE: {
-      return state.set('authenticationErrorMessage', '');
-    }
-    case ActionTypes.REGISTRATION_FAILED: {
-      return state.set('registrationErrorMessage', action.message);
-    }
-    case ActionTypes.LOGOUT:
-      return state
-        .set('userIsAuthenticated', false)
-        .set('auth', {})
-        .set('authenticationErrorMessage', '');
-    // End of Authentication process
 
     case ActionTypes.LOAD_MENU_SUCCESS: {
       const data = action.data;

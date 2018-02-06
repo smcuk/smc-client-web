@@ -18,6 +18,10 @@ import Loading from '../../components/Loading';
 import { userIsNotAuthenticatedRedir } from '../Auth/auth-routing';
 import { withRouter } from 'react-router-dom';
 import AuthOptions from '../../components/Auth/AuthOptions';
+import injectReducer from '../../utils/injectReducer';
+import injectSaga from '../../utils/injectSaga';
+import reducer from './reducer';
+import saga from './saga';
 
 // add this.props.firebase
 class AuthPage extends React.Component {
@@ -364,9 +368,14 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const withReducer = injectReducer({ key: 'home', reducer });
+const withSaga = injectSaga({ key: 'home', saga });
+
 export default compose(
   firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps),
+  withReducer,
+  withSaga,
   withRouter,
   userIsNotAuthenticatedRedir
 )(AuthPage);

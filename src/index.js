@@ -23,6 +23,7 @@ const MOUNT_NODE = document.getElementById('root');
 // Inject default app sagas
 sagas.map(store.runSaga);
 
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

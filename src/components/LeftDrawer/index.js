@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import Avatar from 'material-ui/Avatar';
 import * as appActions from '../../containers/App/actions';
-import { makeSelectGlobal } from '../../containers/App/selectors';
+import { makeSelectGlobal, makeSelectFirebaseAuth } from '../../containers/App/selectors';
 import Theme from '../../theming/theme';
 import Styles from './styles';
 import OpenViewsItems from './OpenViewItems';
@@ -135,15 +135,15 @@ class LeftDrawer extends React.Component {
         <div style={styles.logo}>SeeMyChain</div>
         <div style={styles.avatar.div}>
           <Avatar
-            src={this.props.appStore.auth.providerData[0].photoURL || PlaceHolder}
+            src={this.props.auth.providerData[0].photoURL || PlaceHolder}
             size={50}
             style={styles.avatar.icon}
           />
           <span style={styles.avatar.span}>
-            {this.props.appStore.auth.displayName ||
-              this.props.appStore.auth.email.substring(
+            {this.props.auth.displayName ||
+              this.props.auth.email.substring(
                 0,
-                this.props.appStore.auth.email.indexOf('@')
+                this.props.auth.email.indexOf('@')
               )}
           </span>
         </div>
@@ -176,7 +176,9 @@ LeftDrawer.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  appStore: makeSelectGlobal()
+  appStore: makeSelectGlobal(),
+  auth: makeSelectFirebaseAuth()
+
 });
 
 function mapDispatchToProps(dispatch) {
