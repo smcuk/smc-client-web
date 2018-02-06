@@ -16,19 +16,19 @@ export default function authReducer(state = initialState, action) {
         case ActionTypes.LOGIN: {
             console.log('state:', state.get('user'));
 
-            const menus = state.get('menus');
-            const openViews = state.get('openViews');
-            const menuItem = menus[0];
-            const openedMenuItem = openViews[0];
+            // const menus = state.get('menus');
+            // const openViews = state.get('openViews');
+            // const menuItem = menus[0];
+            // const openedMenuItem = openViews[0];
 
             return state
                 .set('userIsAuthenticated', true)
                 .set('auth', action.auth)
                 .set('authenticationErrorMessage', '')
-                .set('selectedMenuIndex', 0)
-                .set('selectedMenuItem', menuItem)
-                .set('selectedOpenedMenuIndex', 0)
-                .set('selectedOpenedMenuItem', openedMenuItem);
+            // .set('selectedMenuIndex', 0)
+            // .set('selectedMenuItem', menuItem)
+            // .set('selectedOpenedMenuIndex', 0)
+            // .set('selectedOpenedMenuItem', openedMenuItem);
         }
 
         case ActionTypes.AUTHENTICATION_FAILED: {

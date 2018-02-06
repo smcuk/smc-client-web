@@ -12,7 +12,6 @@ const userIsAuthenticatedDefaults = {
   },
   authenticatingSelector: state => {
     let firebase = state.get('firebase');
-    console.log(firebase.get('isInitializing'), '-isinit');
     return (
       pathToJS(state.get('firebase'), 'auth') === undefined ||
       firebase.get('isInitializing') === true

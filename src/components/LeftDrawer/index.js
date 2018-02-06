@@ -124,6 +124,7 @@ class LeftDrawer extends React.Component {
     const currentTheme = this.state.currentTheme;
     const styles = Styles(currentTheme);
     const { navDrawerOpen } = this.props;
+    const { email, displayName } = this.props.auth || { email: '', displayName: '' };
 
     return (
       <Drawer
@@ -135,15 +136,15 @@ class LeftDrawer extends React.Component {
         <div style={styles.logo}>SeeMyChain</div>
         <div style={styles.avatar.div}>
           <Avatar
-            src={this.props.auth.providerData[0].photoURL || PlaceHolder}
+            src={(this.props.auth && this.props.auth.providerData[0].photoURL) || PlaceHolder}
             size={50}
             style={styles.avatar.icon}
           />
           <span style={styles.avatar.span}>
-            {this.props.auth.displayName ||
-              this.props.auth.email.substring(
+            {displayName ||
+              email.substring(
                 0,
-                this.props.auth.email.indexOf('@')
+                email.indexOf('@')
               )}
           </span>
         </div>

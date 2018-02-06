@@ -14,7 +14,7 @@ import Dashboard from '../../containers/DashboardPage';
 import Home from '../../components/Home';
 import './App.css';
 
-class App extends React.Component {
+export class App extends React.Component {
   render = () => {
     return (
       <div>

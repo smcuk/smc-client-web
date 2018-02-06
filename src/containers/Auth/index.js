@@ -368,8 +368,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withReducer = injectReducer({ key: 'home', reducer });
-const withSaga = injectSaga({ key: 'home', saga });
+const withReducer = injectReducer({ key: 'auth', reducer });
+const withSaga = injectSaga({ key: 'auth', saga });
 
 export default compose(
   firebaseConnect(),

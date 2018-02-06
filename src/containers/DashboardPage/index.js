@@ -16,7 +16,7 @@ import './road.css'
 
 
 
-class DashboardPage extends React.Component {
+export class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

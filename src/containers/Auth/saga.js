@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, all } from 'redux-saga/effects';
 
 import {
     SIGN_IN,
@@ -132,4 +132,11 @@ export function* resetPassword() {
 
 
 
-export default [signIn, signInFacebook, signInGoogle, register, resetPassword];
+// export default [signIn, signInFacebook, signInGoogle, register, resetPassword];
+
+
+export default function* rootSaga() {
+    yield all([
+        signIn(), signInFacebook(), signInGoogle(), register(), resetPassword()
+    ])
+}
