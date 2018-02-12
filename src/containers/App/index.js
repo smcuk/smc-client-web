@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import * as appActions from './actions';
 import { makeSelectGlobal, makeSelectFirebaseAuth } from './selectors';
 import Auth from '../../containers/Auth';

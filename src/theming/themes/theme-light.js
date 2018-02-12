@@ -1,7 +1,11 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const themeLight = getMuiTheme({
+
+
+
+let themeLight = getMuiTheme({
   palette: {
+
   },
   appBar: {
     height: 57,
@@ -13,6 +17,7 @@ const themeLight = getMuiTheme({
   },
   raisedButton: {
     primaryColor: '#1E88E5',
+    primaryTextColor: 'red',
   },
   tabs: {
     backgroundColor: '#ececec',

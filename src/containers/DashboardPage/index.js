@@ -7,11 +7,23 @@ import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Layout from '../Layout';
-import { Card, CardMedia } from 'material-ui/Card';
 import { VictoryLine, VictoryScatter, VictoryGroup, VictoryLabel } from 'victory'
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import RoadMapMilestone from '../../components/RoadMap/RoadMapMilestone'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth';
+import injectReducer from '../../utils/injectReducer';
+import injectSaga from '../../utils/injectSaga';
+import { makeSelectUserProfile, makeSelectFirebaseAuth } from '../../containers/App/selectors';
+import { createStructuredSelector } from 'reselect';
+import { bindActionCreators } from 'redux';
+import * as appActions from './actions';
+import ProfileTypeDialog from './ProfileTypeDialog/index'
+import saga from './saga'
 import './road.css'
+
+
+
+
 
 
 
@@ -33,11 +45,21 @@ export class DashboardPage extends React.Component {
   }
 
 
+  showResults = values =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        // simulate server latency
+        window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+        resolve()
+      }, 500)
+    })
+
+
 
 
 
   render() {
-    const { width } = this.props;
+    const { width, profile } = this.props;
     let widthGrow = 1;
     let data = [];
     let domain = {}
@@ -87,50 +109,76 @@ export class DashboardPage extends React.Component {
 
     }
 
+    let content = null;
+    if (profile && !profile.userType) {
+      content = <ProfileTypeDialog onSubmit={this.showResults} initialValues={{ userType: 'Buyer' }} profile={profile}></ProfileTypeDialog>
+    }
+
+    if (profile && profile.userType) {
+      content = <div className="road-container">
+
+        <Card style={{ backgroundColor: 'transparent', boxShadow: 'none', maxWidth: '1000px' }}>
+          <CardMedia >
+
+            <h1>{profile.userType} workflow</h1>
+            <VictoryGroup width={data.length * widthGrow} height={data.length * 200} domain={{ x: [-200, 200], y: [0, 400] }} data={data}>
+              <VictoryLine
+                sortKey="order"
+                interpolation={"cardinal"}
+                style={{ data: { stroke: "black", strokeWidth: roadwidth } }}
+              />
+
+              <VictoryLine
+                sortKey="order"
+                interpolation={"cardinal"}
+                style={{ data: { stroke: "white", strokeWidth: 2, strokeDasharray: "15,15" } }}
+              />
+              <VictoryScatter
+                dataComponent={<RoadMapMilestone milestoneOffsetX={milestoneOffsetX} milestoneOffsetY={milestoneOffsetY} />}
+              />
+            </VictoryGroup>
+
+
+
+          </CardMedia>
+        </Card>
+      </div>
+    }
+
 
     return (
+
+
+
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
-          <div className="road-container">
-            {' '}
-            <Card style={{ backgroundColor: 'transparent', boxShadow: 'none', maxWidth: '1000px' }}>
-              <CardMedia >
-
-
-                <VictoryGroup width={data.length * widthGrow} height={data.length * 200} domain={{ x: [-200, 200], y: [0, 400] }} data={data}>
-                  <VictoryLine
-                    sortKey="order"
-                    interpolation={"cardinal"}
-                    style={{ data: { stroke: "black", strokeWidth: roadwidth } }}
-                  />
-
-                  <VictoryLine
-                    sortKey="order"
-                    interpolation={"cardinal"}
-                    style={{ data: { stroke: "white", strokeWidth: 2, strokeDasharray: "15,15" } }}
-                  />
-                  <VictoryScatter
-                    dataComponent={<RoadMapMilestone milestoneOffsetX={milestoneOffsetX} milestoneOffsetY={milestoneOffsetY} />}
-                  />
-                </VictoryGroup>
-
-
-
-              </CardMedia>
-            </Card>
-          </div>
+          {content}
         </PageBase>
       </Layout>
     );
   }
 }
 
+const withSaga = injectSaga({ key: 'dash', saga });
+
+const mapStateToProps = createStructuredSelector({
+  profile: makeSelectUserProfile(),
+  auth: makeSelectFirebaseAuth()
+
+});
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(appActions, dispatch)
+  };
+}
+
+
 export default compose(
   withWidth(),
   firebaseConnect(),
   userIsAuthenticatedRedir,
-  connect(({ firebase }) => ({
-    auth: pathToJS(firebase, 'auth'),
-    account: pathToJS(firebase, 'profile')
-  }))
+  connect(mapStateToProps, mapDispatchToProps),
+  withSaga
 )(DashboardPage);

@@ -40,6 +40,7 @@ export default function authReducer(state = initialState, action) {
         case ActionTypes.REGISTRATION_FAILED: {
             return state.set('registrationErrorMessage', action.message);
         }
+
         case ActionTypes.LOGOUT:
             return state
                 .set('userIsAuthenticated', false)

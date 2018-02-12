@@ -13,6 +13,10 @@ const selectFirebase = () => state => state.get('firebase');
 const makeSelectFirebaseAuth = () =>
   createSelector(selectFirebase(), firebase => pathToJS(firebase, 'auth'));
 
+const makeSelectUserProfile = () =>
+  createSelector(selectFirebase(), firebase => pathToJS(firebase, 'profile'));
+
+
 const makeSelectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
@@ -34,5 +38,6 @@ export {
   makeSelectGlobal,
   makeSelectLocationState,
   makeSelectFirebaseAuth,
+  makeSelectUserProfile,
   selectFirebase
 };
