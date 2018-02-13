@@ -1,5 +1,5 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 
 
@@ -17,7 +17,6 @@ let themeLight = getMuiTheme({
   },
   raisedButton: {
     primaryColor: '#1E88E5',
-    primaryTextColor: 'red',
   },
   tabs: {
     backgroundColor: '#ececec',
@@ -29,5 +28,7 @@ let themeLight = getMuiTheme({
   },
 });
 
+
+// let themeLight = getMuiTheme(darkBaseTheme);
 
 export default themeLight;

@@ -6,7 +6,7 @@ import {
 } from 'redux-form-material-ui'
 import { Card, CardHeader, CardTitle, CardText, CardActions } from 'material-ui/Card';
 
-import RaisedButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ProfileTypeDialog extends Component {
 

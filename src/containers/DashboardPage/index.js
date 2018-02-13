@@ -16,13 +16,13 @@ import injectSaga from '../../utils/injectSaga';
 import { makeSelectUserProfile, makeSelectFirebaseAuth } from '../../containers/App/selectors';
 import { createStructuredSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
-import * as appActions from './actions';
+import * as actions from './actions';
 import ProfileTypeDialog from './ProfileTypeDialog/index'
 import saga from './saga'
 import './road.css'
 
-
-
+import FlatButton from 'material-ui/FlatButton';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 
 
@@ -67,7 +67,7 @@ export class DashboardPage extends React.Component {
     let milestoneOffsetX = 0;
     let milestoneOffsetY = 0;
 
-
+    console.log(this.props.muiTheme)
 
 
     if (width === LARGE) {
@@ -111,7 +111,9 @@ export class DashboardPage extends React.Component {
 
     let content = null;
     if (profile && !profile.userType) {
-      content = <ProfileTypeDialog onSubmit={this.showResults} initialValues={{ userType: 'Buyer' }} profile={profile}></ProfileTypeDialog>
+      content = <ProfileTypeDialog onSubmit={data => {
+        this.props.actions.updateProfileType({ userType: data.get("userType"), profile: this.props.profile, updateProfile: this.props.firebase.updateProfile })
+      }} firebase={this.props.firebase} profile={profile}></ProfileTypeDialog>
     }
 
     if (profile && profile.userType) {
@@ -148,8 +150,6 @@ export class DashboardPage extends React.Component {
 
     return (
 
-
-
       <Layout>
         <PageBase navigation="SeeMyChain / Dashboard" noWrapContent loading={this.state.loading}>
           {content}
@@ -170,7 +170,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(appActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 
