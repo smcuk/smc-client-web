@@ -111,8 +111,8 @@ export class DashboardPage extends React.Component {
 
     let content = null;
     if (profile && !profile.userType) {
-      content = <ProfileTypeDialog onSubmit={data => {
-        this.props.actions.updateProfileType({ userType: data.get("userType"), profile: this.props.profile, updateProfile: this.props.firebase.updateProfile })
+      content = <ProfileTypeDialog width={width === 'large' ? '70%' : '100%'} onSubmit={data => {
+        this.props.actions.updateProfileType({ userType: data.get("userType"), profile: profile, updateProfile: this.props.firebase.updateProfile })
       }} firebase={this.props.firebase} profile={profile}></ProfileTypeDialog>
     }
 
